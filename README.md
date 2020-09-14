@@ -48,5 +48,7 @@ $ npm start
 ```
 
 ### 👨‍💻 Autor
+<img style="border-radius: 50%;" src="https://media-exp1.licdn.com/dms/image/C4D03AQFslH0kG98L1g/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=onuhbh3D7XgIss9C-dgILQ66w8deH7W_Ay7TI7WESMk" width="100px;" alt=""/>
+
 
 [![Linkedin Badge](https://img.shields.io/badge/-Vinicius-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/vinicius-soran%C3%A7o/)](https://www.linkedin.com/in/vinicius-soran%C3%A7o/) 
