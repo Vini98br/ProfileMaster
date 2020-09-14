@@ -1,28 +1,28 @@
 # ProfileMaster 🎫
 
 ### Descrição
-
+---
 - Aplicação que gera moldura para imagem do profile com os dados vindos do GitHub. Isso poderia ser usado como "ingresso" de um evento, para criar imagens de profiles para redes sociais ou apenas para identifcar pessoas.
 - Projeto feito para processo seletivo da [App Masters](https://appmasters.io/pt/)
 
 ### ✨ Features
-
+---
 - [x] Moldura GDG
 - [x] Moldura IloveProgramming
 
 ### 🛠 Tecnologias
-
+---
 - [React](https://pt-br.reactjs.org/) 
 - [TypeScript](https://www.typescriptlang.org/)
 
 ### 🖥 Pré-requisitos
-
+---
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
 ### 🎲 Rodando o Front End 
-
+---
 ```bash
 # Clone este repositório
 $ git clone <https://github.com/Vini98br/ProfileMaster>
@@ -48,6 +48,7 @@ $ npm start
 ```
 
 ### 👨‍💻 Autor
+---
 <img style="border-radius: 50%;" src="https://media-exp1.licdn.com/dms/image/C4D03AQFslH0kG98L1g/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=onuhbh3D7XgIss9C-dgILQ66w8deH7W_Ay7TI7WESMk" width="100px;" alt=""/>
 
 
