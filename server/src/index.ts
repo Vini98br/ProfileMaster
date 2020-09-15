@@ -6,7 +6,7 @@ import axios, { AxiosError, AxiosResponse } from "axios";
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:3000/',
+  origin: '*',
   credentials: true
 }));
 app.use(bodyParser.json());
