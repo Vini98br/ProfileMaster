@@ -1,11 +1,12 @@
-import express, { Response, Request, NextFunction } from "express";
+import express, { Response, Request } from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
 import axios, { AxiosError, AxiosResponse } from "axios";
+
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:3000',
+  origin: 'http://localhost:3000/',
   credentials: true
 }));
 app.use(bodyParser.json());
@@ -44,7 +45,7 @@ app.post('/auth', (req: Request, res: Response) => {
       }))
       .catch(error => res.status(400).json(error));
     } catch (e) {
-      console.log(e);
+      return res.status(400).json(e);
     }
   })
   .catch((err: AxiosError) => res.status(400).json(err))

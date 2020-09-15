@@ -13,8 +13,17 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html, body, #root {
-    height: 100%;
-    width: 100%;
+    height: 100vh;
+  }
+
+  body {
+    background-color: #000;
+  }
+
+  #root {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   body, button, p, input {
@@ -24,7 +33,10 @@ const GlobalStyle = createGlobalStyle`
 
 export const Container = styled.div`
   height: 100%;
-  /* overflow: hidden; */
+`;
+
+export const Content = styled.div`
+  height: 85%;
 `;
 
 function App() {
@@ -32,8 +44,10 @@ function App() {
     <ThemeProvider theme={myTheme}>
       <GlobalStyle />
       <Container>
-        {/* <Header /> */}
-        <Home />
+        <Header />
+        <Content>
+          <Home />
+        </Content>
       </Container>
     </ThemeProvider>
   );

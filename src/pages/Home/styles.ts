@@ -1,20 +1,9 @@
 import styled, { keyframes } from 'styled-components';
 
-export const Container = styled.div`
-  background-color: #000;
-  height: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  @media (max-width: 1080px){
-    grid-template-columns: 1fr;
-  }
-`;
-
 export const Content = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 0 50px;
 `; 
 
 export const Title = styled.h1`
@@ -63,11 +52,11 @@ export const Button = styled.a<{hasLogin?: boolean}>`
 
 export const Ticket = styled.div`
   background-color: #000;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 0 50px;
 `;
 
 export const Image = styled.img`
@@ -78,7 +67,7 @@ export const Image = styled.img`
 export const Frame = styled.div<{hasImage?: boolean}>`
   border: ${props => props.hasImage ? `5px dashed ${props.theme.colors.gray}` : 'unset'};
   position: relative;
-  min-width: 100%;
+  width: 500px;
   height: 500px;
   display: flex;
   justify-content: center;
@@ -91,46 +80,6 @@ export const Obs = styled.h3`
   margin-top: 10px;
   font-size: 15px;
   font-weight: ${props => props.theme.fontLight};
-`;
-
-export const Footer = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  background-color: #fff;
-  opacity: 0.8;
-  height: 100px;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-`; 
-
-export const Identification = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-`;
-
-export const LogoWrapper = styled.div`
-  width: 100px;
-  height: 100%;
-`; 
-
-export const Logo = styled.img`
-  width: auto;
-  height: 100%;
-`;
-
-export const Name = styled.h3`
-  color: #000;
-  font-weight: ${props => props.theme.fontLight};
-  font-size: 23px;
-`; 
-
-export const Role = styled.h4`
-  color: ${props => props.theme.colors.gray};
-  font-size: 20px;
 `;
 
 const rotate360 = keyframes`
@@ -192,5 +141,40 @@ export const DownloadButton = styled.a`
   }
   p {
     font-weight: ${props => props.theme.fontBold};
+  }
+`;
+
+export const Container = styled.div`
+  background-color: #000;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 0 100px;
+  @media (max-width: 1180px){
+    padding: 0 50px;
+    grid-template-columns: 1fr;
+    grid-row-gap: 30px;
+    ${Content} {
+      align-items: center;
+      text-align: center;
+    }
+    ${Button} {
+      width: 300px;
+    }
+  }
+  @media (min-width: 401px) and (max-width: 659px){
+    padding: 80px 0;
+    ${Frame}{
+      width: 300px;
+      height: 300px;
+    }
+  }
+  @media (max-width: 400px){
+    padding: 80px 0;
+    ${Frame}{
+      margin-top: 10px;
+      width: 250px;
+      height: 250px;
+    }
   }
 `;

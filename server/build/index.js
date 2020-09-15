@@ -17,12 +17,12 @@ app.use(body_parser_1.default.json({ type: "text/*" }));
 app.use(body_parser_1.default.urlencoded({ extended: false }));
 app.post('/auth', function (req, res) {
     var _a = req.body, client_id = _a.client_id, client_secret = _a.client_secret, code = _a.code, redirect_uri = _a.redirect_uri;
-    return axios_1.default.post('https://github.com/login/oauth/access_token', {
+    axios_1.default.post('https://github.com/login/oauth/access_token', {
         client_id: client_id,
         client_secret: client_secret,
         code: code,
         redirect_uri: redirect_uri
-    }, { responseType: 'json' })
+    }, { responseType: 'text' })
         .then(function (response) {
         var params = new URLSearchParams(response.data);
         try {
@@ -33,16 +33,22 @@ app.post('/auth', function (req, res) {
                     Authorization: "token " + access_token
                 }
             })
-                .then(function (resp) {
-                console.log(resp.data);
-                return res.status(200).json(resp.data);
-            })
-                .catch(function (error) { return res.status(400).json({ message: 'ERRO' }); });
+                .then(function (resp) { return res.status(200).send({
+                avatar_url: resp.data.avatar_url,
+                bio: resp.data.bio,
+                blog: resp.data.blog,
+                html_url: resp.data.html_url,
+                id: resp.data.id,
+                login: resp.data.login,
+                name: resp.data.name,
+                node_id: resp.data.node_id,
+                url: resp.data.url,
+            }); })
+                .catch(function (error) { return res.status(400).json(error); });
         }
         catch (e) {
             console.log(e);
         }
-        // return res.status(200).json({ok: 'ok'})
     })
         .catch(function (err) { return res.status(400).json(err); });
 });

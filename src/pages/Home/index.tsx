@@ -4,10 +4,11 @@ import { CheckCircleFilled, DownloadOutlined, GithubOutlined } from "@ant-design
 import qs from 'qs';
 import { 
   Container, Title, SubTitle, Button, Content, Ticket, Obs, Frame,
-  Footer, LogoWrapper, Name, Role, Logo, Identification, Spinner, SpinnerWrapper, Image, DownloadButton
+  Spinner, SpinnerWrapper, Image, DownloadButton
 } from './styles';
 import axios from 'axios';
 import html2canvas from 'html2canvas';
+import ImageFooter from '../../components/ImageFooter';
 
 export interface UserData {
   avatar_url: string;
@@ -63,7 +64,7 @@ const Home: React.FC = () => {
   }, []);
 
   const handleDownloadClick = () => {
-    html2canvas(divRef?.current!, { logging: true, useCORS: true }).then(canvas => {
+    html2canvas(divRef?.current!, { logging: true, useCORS: true, scale: window.innerWidth < 660 ? 2 : 1 }).then(canvas => {
       var a = document.createElement('a');
       a.href=canvas.toDataURL("image/png");
       a.download = "image.png"
@@ -74,7 +75,7 @@ const Home: React.FC = () => {
   const handleLogin = (hasLogin: boolean) => () => {
     if(!hasLogin)
       window.open(`https://github.com/login/oauth/authorize/?${queryString}`, 'newwindow',  'width=600,height=750')
-  }
+  };
   
   return isLoading ? (
     <SpinnerWrapper>
@@ -106,15 +107,7 @@ const Home: React.FC = () => {
       <Ticket>
         <Frame ref={divRef} hasImage={!Boolean(userData?.avatar_url)}>
           {userData?.avatar_url ? <Image src={userData.avatar_url} /> : 'Sua imagem aqui'}
-          <Footer>
-            <LogoWrapper>
-              <Logo src={logoGDG} />
-            </LogoWrapper>
-            <Identification>
-              <Name>{userData?.name ? userData?.name : 'Seu nome'}</Name>
-              <Role>Embaixador(a)</Role>
-            </Identification>
-          </Footer>
+          <ImageFooter name={userData?.name} logo={logoGDG} role='Embaixador(a)'/>
         </Frame>
         {userData?.avatar_url && 
           <DownloadButton onClick={handleDownloadClick}>
