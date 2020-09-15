@@ -9,7 +9,7 @@ var cors_1 = __importDefault(require("cors"));
 var axios_1 = __importDefault(require("axios"));
 var app = express_1.default();
 app.use(cors_1.default({
-    origin: 'http://localhost:3000/',
+    origin: 'http://localhost:3000',
     credentials: true
 }));
 app.use(body_parser_1.default.json());
@@ -17,7 +17,6 @@ app.use(body_parser_1.default.json({ type: "text/*" }));
 app.use(body_parser_1.default.urlencoded({ extended: false }));
 app.post('/auth', function (req, res) {
     var _a = req.body, client_id = _a.client_id, client_secret = _a.client_secret, code = _a.code, redirect_uri = _a.redirect_uri;
-    console.log(req.body);
     axios_1.default.post('https://github.com/login/oauth/access_token', {
         client_id: client_id,
         client_secret: client_secret,
