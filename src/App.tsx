@@ -1,25 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { createGlobalStyle, ThemeProvider } from "styled-components";
+import styled from 'styled-components';
+import { myTheme } from './theme/theme';
+import Home from './pages/Home';
+import Header from './components/Header';
+
+const GlobalStyle = createGlobalStyle`
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html, body, #root {
+    height: 100%;
+    width: 100%;
+  }
+
+  body, button, p, input {
+    font-family: ${props => props.theme.fontFamily};
+  }
+`;
+
+export const Container = styled.div`
+  height: 100%;
+  /* overflow: hidden; */
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={myTheme}>
+      <GlobalStyle />
+      <Container>
+        {/* <Header /> */}
+        <Home />
+      </Container>
+    </ThemeProvider>
   );
 }
 
