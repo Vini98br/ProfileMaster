@@ -14,14 +14,33 @@
 ---
 - [React](https://pt-br.reactjs.org/) 
 - [TypeScript](https://www.typescriptlang.org/)
+- [NodeJs](https://nodejs.org/en/)
 
 ### 🖥 Pré-requisitos
 ---
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
-[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/). 
+[Git](https://git-scm.com), [Node.js](https://nodejs.org/en/), [TypeScript](https://www.typescriptlang.org/#installation). 
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
-### 🎲 Rodando o Front End 
+### 🎲 Rodando o Back-End (Servidor)  
+---
+```bash
+# Clone este repositório
+$ git clone <https://github.com/Vini98br/ProfileMaster>
+
+# Acesse a pasta do projeto no terminal/cmd
+$ cd ProfileMaster/server
+
+# Instale as dependências
+$ npm install
+
+# Execute a aplicação em modo de desenvolvimento
+$ npm start
+
+# O servidor inciará na porta:5000
+```
+
+### 🖼 Rodando o Front-End 
 ---
 ```bash
 # Clone este repositório
@@ -32,20 +51,23 @@ $ cd ProfileMaster
 
 # Instale as dependências
 $ npm install
-
-# Execute a aplicação em modo de desenvolvimento
-$ npm start
-
-# O projeto inciará na porta:3000 - acesse <http://localhost:3000>
 ```
-
+* Antes de executar o projeto crie um arquivo na raiz do projeto com o nome de `.env`, com as seguintes variáveis (acesse esse [link](https://developer.github.com/apps/building-oauth-apps/creating-an-oauth-app/) que ensina a criar as 2 primeiras variáveis ambiente:
 ```javascript
   REACT_APP_CLIENT_ID=Your Client ID from Github
   REACT_APP_CLIENT_SECRET=Your Client Secret from Github
-  REACT_APP_REDIRECT_URI=http://localhost:3000/login
-  REACT_APP_PROXY_URL=http://localhost:5000/authenticate
+  REACT_APP_REDIRECT_URI=http://localhost:3000/
+  REACT_APP_PROXY_URL=http://localhost:5000/auth
   SERVER_PORT=5000
 ```
+* Após esse passo execute o comando a seguir para iniciar o Front-end:
+```bash
+# Execute a aplicação em modo de desenvolvimento
+$ npm start
+
+# O servidor inciará na porta:3000 - acesse <localhost:3000>
+```
+
 
 ### 👨‍💻 Autor
 ---
