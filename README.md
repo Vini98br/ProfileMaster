@@ -14,6 +14,7 @@
 ---
 - [React](https://pt-br.reactjs.org/) 
 - [TypeScript](https://www.typescriptlang.org/)
+- [NodeJs](https://nodejs.org/en/)
 
 ### 🖥 Pré-requisitos
 ---
