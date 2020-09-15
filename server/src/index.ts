@@ -6,7 +6,7 @@ import axios, { AxiosError, AxiosResponse } from "axios";
 const app = express();
 
 app.use(cors({
-  origin: '*',
+  origin: 'http://localhost:3000',
   credentials: true
 }));
 app.use(bodyParser.json());
@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 
 app.post('/auth', (req: Request, res: Response) => {
   const { client_id, client_secret, code, redirect_uri } = req.body;
-
+  
   axios.post('https://github.com/login/oauth/access_token', {
     client_id, 
     client_secret, 

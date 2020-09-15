@@ -45,6 +45,7 @@ const Home: React.FC = () => {
 
     (async () => {
       const code = qs.parse(window.location.search.replace('?',''))?.code;
+      console.log(code)
       if(code){
         setIsLoading(true);
         const res = await axios.post(process.env.REACT_APP_PROXY_URL!,{
