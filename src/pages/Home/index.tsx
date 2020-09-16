@@ -2,13 +2,13 @@ import React, { useEffect, useRef, useState } from 'react';
 import logoGDG from '../../assets/images/gdg-logo.png';
 import { CheckCircleFilled, DownloadOutlined, GithubOutlined } from "@ant-design/icons";
 import qs from 'qs';
+import axios from 'axios';
+import ImageFooter from '../../components/ImageFooter';
+import { DownloadElement } from "../../utils";
 import { 
   Container, Title, SubTitle, Button, Content, Ticket, Obs, Frame,
   Spinner, SpinnerWrapper, Image, DownloadButton
 } from './styles';
-import axios from 'axios';
-import html2canvas from 'html2canvas';
-import ImageFooter from '../../components/ImageFooter';
 
 export interface UserData {
   avatar_url: string;
@@ -30,14 +30,11 @@ const Home: React.FC = () => {
     client_id: process.env.REACT_APP_CLIENT_ID,
     redirect_uri: process.env.REACT_APP_REDIRECT_URI,
     client_secret: process.env.REACT_APP_CLIENT_SECRET
-    // isLoggedIn: JSON.parse(localStorage.getItem("isLoggedIn")!) || false,
-    // user: JSON.parse(localStorage.getItem("user")!) || null,
   };
   const queryString = qs.stringify(params);
 
   useEffect(() => {
     const setState = ({newValue, key, ...rest}: StorageEvent) => {
-      console.log(key)
       if(key === '@GitHub_User' || key === null)
         setUserData(JSON.parse(newValue!));
     }
@@ -45,7 +42,6 @@ const Home: React.FC = () => {
 
     (async () => {
       const code = qs.parse(window.location.search.replace('?',''))?.code;
-      console.log(code)
       if(code){
         setIsLoading(true);
         const res = await axios.post(process.env.REACT_APP_PROXY_URL!,{
@@ -64,18 +60,23 @@ const Home: React.FC = () => {
     return () => window.removeEventListener('storage', setState);
   }, []);
 
-  const handleDownloadClick = () => {
-    html2canvas(divRef?.current!, { logging: true, useCORS: true, scale: window.innerWidth < 660 ? 2 : 1 }).then(canvas => {
-      var a = document.createElement('a');
-      a.href=canvas.toDataURL("image/png");
-      a.download = "image.png"
-      a.click();
-    })
-  };
-
   const handleLogin = (hasLogin: boolean) => () => {
     if(!hasLogin)
       window.open(`https://github.com/login/oauth/authorize/?${queryString}`, 'newwindow',  'width=600,height=750')
+  };
+
+  const getButtonContent = (login: string) => {
+    if(login){
+      return (
+        <>
+          <p>{userData.login}</p>
+          <CheckCircleFilled />
+        </>
+      );
+    }
+    else{
+      return <p>Gerar com GitHub</p>;
+    }
   };
   
   return isLoading ? (
@@ -95,13 +96,7 @@ const Home: React.FC = () => {
           onClick={handleLogin(Boolean(userData?.login))}
         >
           <GithubOutlined />
-          {userData?.login ? 
-            <>
-              <p>{userData.login}</p>
-              <CheckCircleFilled />
-            </>
-          : <p>Gerar com GitHub</p>
-        }
+          {getButtonContent(userData?.login)}
         </Button>
         <Obs>Vamos usar somente informações públicas</Obs>
       </Content>
@@ -111,7 +106,7 @@ const Home: React.FC = () => {
           <ImageFooter name={userData?.name} logo={logoGDG} role='Embaixador(a)'/>
         </Frame>
         {userData?.avatar_url && 
-          <DownloadButton onClick={handleDownloadClick}>
+          <DownloadButton onClick={() => DownloadElement(divRef?.current!, 'gdg')}>
             <DownloadOutlined />
             <p>Download</p>
           </DownloadButton>

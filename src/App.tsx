@@ -12,22 +12,15 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  html, body, #root {
-    height: 100vh;
-  }
-
-  body {
+  #profile-master {
     background-color: #000;
-  }
-
-  #root {
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
-  body, button, p, input {
-    font-family: ${props => props.theme.fontFamily};
+    button, p, input, h1, h2, h3, h4, h5, h6 {
+      font-family: ${props => props.theme.fontFamily};
+    }
   }
 `;
 
@@ -36,7 +29,7 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  height: 85%;
+  height: 100%;
 `;
 
 function App() {
@@ -44,7 +37,7 @@ function App() {
     <ThemeProvider theme={myTheme}>
       <GlobalStyle />
       <Container>
-        <Header />
+        {/* <Header /> */}
         <Content>
           <Home />
         </Content>
