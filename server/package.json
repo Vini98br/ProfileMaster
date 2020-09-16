@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "tsc && nodemon src/index.ts",
+    "dev": "nodemon src/index.js",
     "start": "node src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,6 +21,7 @@
   "dependencies": {
     "axios": "^0.20.0",
     "cors": "^2.8.5",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "xml2json": "^0.12.0"
   }
 }
