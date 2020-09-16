@@ -1,7 +1,7 @@
-import express, { Response, Request } from "express";
-import bodyParser from "body-parser";
-import cors from "cors";
-import axios, { AxiosError, AxiosResponse } from "axios";
+const express = require('express'); 
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const axios = require('axios');
 
 const app = express();
 
@@ -10,7 +10,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.json({type: "text/*"}));
 app.use(bodyParser.urlencoded({extended:false}));
 
-app.post('/auth', (req: Request, res: Response) => {
+app.post('/auth', (req, res) => {
   const { client_id, client_secret, code, redirect_uri } = req.body;
   
   axios.post('https://github.com/login/oauth/access_token', {
@@ -19,7 +19,7 @@ app.post('/auth', (req: Request, res: Response) => {
     code,
     redirect_uri
   }, {responseType: 'text'})
-  .then((response: AxiosResponse) => {
+  .then((response) => {
     let params = new URLSearchParams(response.data);
     try {
       const access_token = params.get('access_token');
@@ -29,7 +29,7 @@ app.post('/auth', (req: Request, res: Response) => {
           Authorization: `token ${access_token}`
         }
       })
-      .then(resp => res.status(200).send({
+      .then((resp) => res.status(200).send({
         avatar_url: resp.data.avatar_url,
         bio: resp.data.bio,
         blog: resp.data.blog,
@@ -40,12 +40,12 @@ app.post('/auth', (req: Request, res: Response) => {
         node_id: resp.data.node_id,
         url: resp.data.url,
       }))
-      .catch(error => res.status(400).json(error));
+      .catch((error) => res.status(400).json(error));
     } catch (e) {
       return res.status(400).json(e);
     }
   })
-  .catch((err: AxiosError) => res.status(400).json(err))
+  .catch((err) => res.status(400).json(err))
 });
 
 const PORT = process.env.PORT || 5000;
