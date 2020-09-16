@@ -18,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     align-items: center;
     justify-content: center;
-    button, p, input, h1, h2, h3, h4, h5, h6 {
+    div, button, p, input, h1, h2, h3, h4, h5, h6 {
       font-family: ${props => props.theme.fontFamily};
     }
   }
