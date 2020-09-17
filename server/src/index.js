@@ -26,7 +26,7 @@ app.get('/files', async (req, res) => {
     })
 })
 
-app.get('/logo', async (req, res) => {
+app.get('/logo', (req, res) => {
   AWS.config.update(
     {
       accessKeyId: AWS.config.credentials.accessKeyId,
@@ -43,7 +43,7 @@ app.get('/logo', async (req, res) => {
   res.attachment('gdg-logo.png');
   var fileStream = s3.getObject(options).createReadStream();
   fileStream.pipe(res);
-})
+});
 
 app.post('/auth', (req, res) => {
   const { client_id, client_secret, code, redirect_uri } = req.body;
