@@ -11,7 +11,7 @@ const ImageFooter: React.FC<ImageFooterProps> = ({name = 'Seu nome', role}) => {
   return (
     <Footer>
       <LogoWrapper>
-        <Logo src={process.env.REACT_APP_PROXY_URL + 'logo'} />
+        <Logo src={process.env.REACT_APP_PROXY_URL! + 'logo'} />
       </LogoWrapper>
       <Identification>
         <Name>{name}</Name>
