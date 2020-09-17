@@ -7,7 +7,7 @@ export interface ImageFooterProps {
   role: string;
 }
 
-const ImageFooter: React.FC<ImageFooterProps> = ({name = 'Seu nome', role }) => {
+const ImageFooter: React.FC<ImageFooterProps> = ({name = 'Seu nome', role}) => {
   return (
     <Footer>
       <LogoWrapper>
