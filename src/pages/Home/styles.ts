@@ -57,6 +57,7 @@ export const Ticket = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 20px 0;
 `;
 
 export const Image = styled.img`
@@ -147,16 +148,21 @@ export const DownloadButton = styled.a`
 export const Container = styled.div`
   background-color: #000;
   height: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: row;
   padding: 0 100px;
+  ${Content} {
+    padding-right: 100px;
+  }
   @media (max-width: 1180px){
     padding: 0 50px;
-    grid-template-columns: 1fr;
-    grid-row-gap: 30px;
+    flex-direction: column;
     ${Content} {
       align-items: center;
       text-align: center;
+      margin-bottom: 20px;
+      padding-right: unset;
+
     }
     ${Button} {
       width: 300px;
@@ -171,6 +177,12 @@ export const Container = styled.div`
   }
   @media (max-width: 400px){
     padding: 80px 0;
+    ${Button} {
+      width: 200px;
+    }
+    ${Content} {
+      padding: 0 20px;
+    }
     ${Frame}{
       margin-top: 10px;
       width: 250px;
