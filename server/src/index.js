@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const axios = require('axios');
 const xmlParser = require('xml2json');
+const AWS = require('aws-sdk');
 
 const app = express();
 
@@ -23,7 +24,25 @@ app.get('/files', async (req, res) => {
         }).filter(Boolean)
       );
     })
-  
+})
+
+app.get('/logo', async (req, res) => {
+  AWS.config.update(
+    {
+      accessKeyId: AWS.config.credentials.accessKeyId,
+      secretAccessKey: AWS.config.credentials.secretAccessKey,
+      region: AWS.config.region,
+    }
+  );
+  var s3 = new AWS.S3();
+  var options = {
+      Bucket: 'staticprofilemaster',
+      Key: 'gdg-logo.png',
+  };
+
+  res.attachment('gdg-logo.png');
+  var fileStream = s3.getObject(options).createReadStream();
+  fileStream.pipe(res);
 })
 
 app.post('/auth', (req, res) => {

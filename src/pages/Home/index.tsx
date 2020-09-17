@@ -43,7 +43,7 @@ const Home: React.FC = () => {
       const code = qs.parse(window.location.search.replace('?',''))?.code;
       if(code){
         setIsLoading(true);
-        const res = await axios.post(process.env.REACT_APP_PROXY_URL!,{
+        const res = await axios.post(process.env.REACT_APP_PROXY_URL! + 'auth',{
           ...params,
           code
         });        
