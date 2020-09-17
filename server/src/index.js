@@ -15,11 +15,12 @@ app.get('/files', async (req, res) => {
   axios.get(`https://staticprofilemaster.s3.amazonaws.com/`)
     .then(resp => {
       const parsed = xmlParser.toJson(resp.data);
-      res.send(
-        JSON.parse(parsed).ListBucketResult.Contents.filter(obj => {
-          if((obj.Key[0] === "2" && obj.Key[obj.Key.length - 1] === 's') || (obj.Key[0] === "m" && obj.Key[obj.Key.length - 1] === 's'))
-            return obj;
-        })
+      res.send( 
+        JSON.parse(parsed).ListBucketResult.Contents.map(obj => {
+          let sub = obj.Key.substring(obj.Key.lastIndexOf('/') + 1, obj.Key.length)
+          if((sub[0] === "2" && sub[sub.length - 1] === 's') || (sub[0] === "m" && sub[sub.length - 1] === 's'))
+            return sub;
+        }).filter(Boolean)
       );
     })
   
