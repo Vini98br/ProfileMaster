@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from 'react';
-import logoGDG from '../../assets/images/gdg-logo.png';
 import { CheckCircleFilled, DownloadOutlined, GithubOutlined } from "@ant-design/icons";
 import qs from 'qs';
 import axios from 'axios';
@@ -103,7 +102,7 @@ const Home: React.FC = () => {
       <Ticket>
         <Frame ref={divRef} hasImage={!Boolean(userData?.avatar_url)}>
           {userData?.avatar_url ? <Image src={userData.avatar_url} /> : 'Sua imagem aqui'}
-          <ImageFooter name={userData?.name} logo={logoGDG} role='Embaixador(a)'/>
+          <ImageFooter name={userData?.name} role='Embaixador(a)'/>
         </Frame>
         {userData?.avatar_url && 
           <DownloadButton onClick={() => DownloadElement(divRef?.current!, 'gdg')}>

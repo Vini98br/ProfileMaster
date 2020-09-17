@@ -5,14 +5,13 @@ import { Footer, Logo, LogoWrapper, Identification, Name, Role } from './styles'
 export interface ImageFooterProps {
   name: string | undefined;
   role: string;
-  logo: string;
 }
 
-const ImageFooter: React.FC<ImageFooterProps> = ({name = 'Seu nome', role, logo}) => {
+const ImageFooter: React.FC<ImageFooterProps> = ({name = 'Seu nome', role }) => {
   return (
     <Footer>
       <LogoWrapper>
-        <Logo src={logo} />
+        <Logo src={"https://staticprofilemaster.s3-sa-east-1.amazonaws.com/gdg-logo.png"} />
       </LogoWrapper>
       <Identification>
         <Name>{name}</Name>
