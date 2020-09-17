@@ -29,8 +29,8 @@ app.get('/files', async (req, res) => {
 app.get('/logo', (req, res) => {
   AWS.config.update(
     {
-      accessKeyId: AWS.config.credentials.accessKeyId,
-      secretAccessKey: AWS.config.credentials.secretAccessKey,
+      accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
       region: 'sa-east-1',
     }
   );
