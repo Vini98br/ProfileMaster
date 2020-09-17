@@ -1,4 +1,6 @@
 # ProfileMaster 🎫
+![Heroku](http://heroku-badge.herokuapp.com/?app=heroku-badge&root=projects.html)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/1f2db274-fc52-4e26-8e65-559104272967/deploy-status)](https://app.netlify.com/sites/profilemaster/deploys)
 
 ### Descrição
 ---
