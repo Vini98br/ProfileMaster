@@ -16,6 +16,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "html2canvas": "^1.0.0-rc.7",
+    "html2canvas-render-offscreen": "0.0.3",
     "qs": "^6.9.4",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
