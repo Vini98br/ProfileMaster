@@ -13,7 +13,7 @@ const GlobalStyle = createGlobalStyle`
 
   #profile-master {
     background-color: #000;
-    height: 100%;
+    min-height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
