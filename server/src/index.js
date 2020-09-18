@@ -4,6 +4,7 @@ const cors = require('cors');
 const axios = require('axios');
 const xmlParser = require('xml2json');
 const AWS = require('aws-sdk');
+require('dotenv').config();
 
 const app = express();
 
@@ -13,16 +14,17 @@ app.use(bodyParser.json({type: "text/*"}));
 app.use(bodyParser.urlencoded({extended:false}));
 
 app.get('/files', async (req, res) => {
-  axios.get(`https://staticprofilemaster.s3.amazonaws.com/`)
+  axios.get(`https://${process.env.AWS_BUCKET_NAME}.s3.amazonaws.com/`)
     .then(resp => {
       const parsed = xmlParser.toJson(resp.data);
-      res.send( 
-        JSON.parse(parsed).ListBucketResult.Contents.map(obj => {
+      res.send({
+        bucketName: process.env.AWS_BUCKET_NAME,
+        bundles: [...JSON.parse(parsed).ListBucketResult.Contents.map(obj => {
           let sub = obj.Key.substring(obj.Key.lastIndexOf('/') + 1, obj.Key.length)
           if((sub[0] === "2" && sub[sub.length - 1] === 's') || (sub[0] === "m" && sub[sub.length - 1] === 's'))
             return sub;
-        }).filter(Boolean)
-      );
+        }).filter(Boolean)]
+      });
     })
 })
 
@@ -36,8 +38,8 @@ app.get('/logo', (req, res) => {
   );
   var s3 = new AWS.S3();
   var options = {
-      Bucket: 'staticprofilemaster',
-      Key: 'gdg-logo.png',
+      Bucket: process.env.AWS_BUCKET_NAME,
+      Key: 'gdg-logo.png', //adicionar aquivo no bucket manualmente
   };
 
   res.attachment('gdg-logo.png');
@@ -57,8 +59,6 @@ app.post('/auth', (req, res) => {
   .then((response) => {
     let params = new URLSearchParams(response.data);
     try {
-      axios.get(`http://staticprofilemaster.s3.amazonaws.com/?${res.params}`)
-    .then(res => console.log(xmlParser.toJson(res.data)))
       const access_token = params.get('access_token');
       const scope = params.get('scope');
       return axios.get(`https://api.github.com/user?scope=${scope}`,{
