@@ -21,6 +21,11 @@ const GlobalStyle = createGlobalStyle`
       font-family: ${props => props.theme.fontFamily};
     }
   }
+  
+  & .html2canvas-container { 
+    width: 3000px !important; 
+    height: 3000px !important; 
+  }
 `;
 
 export const Container = styled.div`
