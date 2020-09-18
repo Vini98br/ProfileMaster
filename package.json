@@ -28,7 +28,7 @@
     "build": "NODE_ENV=production react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "build-and-deploy": "npm run build && dotenv cross-var aws s3 rm s3://%AWS_BUCKET_NAME%/static --recursive && aws s3 sync build/ s3://%AWS_BUCKET_NAME%"
+    "build-and-deploy": "npm run build && aws s3 rm s3://staticprofilemaster/static --recursive && aws s3 sync build/ s3://staticprofilemaster"
   },
   "eslintConfig": {
     "extends": "react-app"
