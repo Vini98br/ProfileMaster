@@ -2,30 +2,30 @@
 ![Heroku](http://heroku-badge.herokuapp.com/?app=heroku-badge&root=projects.html)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/1f2db274-fc52-4e26-8e65-559104272967/deploy-status)](https://app.netlify.com/sites/profilemaster/deploys)
 
-### Descrição
----
+## 💫 Demo
+* Backend hospedado: https://nameless-springs-83115.herokuapp.com/
+* Frontend (somente o componente): https://profilemaster.netlify.app/
+* Frontend injetado ( no meu caso um HTML estático simples): https://profilemaster-injected.netlify.app/
+
+## Descrição
 - Aplicação que gera moldura para imagem do profile com os dados vindos do GitHub. Isso poderia ser usado como "ingresso" de um evento, para criar imagens de profiles para redes sociais ou apenas para identifcar pessoas.
 - Projeto feito para processo seletivo da [App Masters](https://appmasters.io/pt/)
 
-### ✨ Features
----
+## ✨ Features
 - [x] Moldura GDG
 - [x] Script de injeção em site de terceiros
 
-### 🛠 Tecnologias
----
+## 🛠 Tecnologias
 - [React](https://pt-br.reactjs.org/) 
 - [TypeScript](https://www.typescriptlang.org/)
 - [NodeJs](https://nodejs.org/en/)
 
-### 🖥 Pré-requisitos
----
+## 🖥 Pré-requisitos
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
 [Git](https://git-scm.com), [Node.js](https://nodejs.org/en/), [TypeScript](https://www.typescriptlang.org/#installation), [AWS-CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) instalado e configurado. 
 Além disto é bom ter um editor para trabalhar com o código como [VSCode](https://code.visualstudio.com/)
 
-### 🎲 Rodando o Back-End (Servidor)  
----
+## 🎲 Rodando o Back-End (Servidor)  
 ```bash
 # Clone este repositório
 $ git clone <https://github.com/Vini98br/ProfileMaster>
@@ -50,8 +50,7 @@ $ npm run dev
 # O servidor inciará na porta:5000
 ```
 
-### 🖼 Rodando o Front-End 
----
+## 🖼 Rodando o Front-End 
 ```bash
 # Clone este repositório
 $ git clone <https://github.com/Vini98br/ProfileMaster>
@@ -86,8 +85,7 @@ $ npm start
 # O servidor inciará na porta:3000 - acesse <localhost:3000>
 ```
 
-### 💲 O script de injeção
----
+## 💲 O script de injeção
 * Deve ser colocado em meio ao HTML um div com a id igual a `profile-master`.
   ```js 
   <div id="profile-master"></div>  
@@ -101,15 +99,8 @@ $ npm start
 * Este código pega os arquivos do bucket do s3, os quais foram colocados lá com o comando `npm run build-and-deploy`.
 * Vale ressaltar que o bucket que é usado no script é o mesmo que é configurado nas variáveis ambiente do servidor em que o nodeJS foi hospedado.
 
-### 💫 Demo
-----
-* Backend hospedado: https://nameless-springs-83115.herokuapp.com/
-* Frontend (somente o componente): https://profilemaster.netlify.app/
-* Frontend injetado ( no meu caso um HTML estático simples): https://profilemaster-injected.netlify.app/
-
-### 👨‍💻 Autor
----
-<img style="border-radius: 50%;" src="https://media-exp1.licdn.com/dms/image/C4D03AQFslH0kG98L1g/profile-displayphoto-shrink_200_200/0?e=1605744000&v=beta&t=onuhbh3D7XgIss9C-dgILQ66w8deH7W_Ay7TI7WESMk" width="100px;" alt=""/>
+## 👨‍💻 Autor
+<img style="border-radius: 50%;" src="https://media-exp1.licdn.com/dms/image/C4D03AQHhVRUrg0-HOA/profile-displayphoto-shrink_200_200/0/1616630141036?e=1622678400&v=beta&t=dq4epFH4tJLs-cnd4zUUOO2CHp7Xq5NsrwalWyhAV7k" width="70px;" alt=""/>
 
 
 [![Linkedin Badge](https://img.shields.io/badge/-Vinicius-blue?style=flat-square&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/vinicius-soran%C3%A7o/)](https://www.linkedin.com/in/vinicius-soran%C3%A7o/) 
