@@ -21,6 +21,10 @@ const GlobalStyle = createGlobalStyle`
       font-family: ${props => props.theme.fontFamily};
     }
   }
+
+  html, body {
+    height: 100vh;
+  }
   
   /* & .html2canvas-container { 
     width: 3000px !important; 
