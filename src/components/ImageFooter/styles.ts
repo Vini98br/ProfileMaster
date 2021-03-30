@@ -10,11 +10,14 @@ export const Identification = styled.div`
 export const LogoWrapper = styled.div`
   width: 100px;
   height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items:center;
 `; 
 
 export const Logo = styled.img`
   width: auto;
-  height: 100%;
+  height: 30px;
 `;
 
 export const Name = styled.h3`
